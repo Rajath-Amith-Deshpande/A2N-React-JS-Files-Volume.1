@@ -1,20 +1,14 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import ctx from './createContext'
 
-class ChildComp extends React.Component {
-    constructor(props){
-        super(props)
-    this.state = {
-        name: "Rajath",
-        location: "Doddaballapura"
-    }   
- }
- childFn = () => {
-        this.props.parentFn(this.state.name, this.state.location)
-    }
-    render() {
-        return <div className="container mt-3">
-                    <button className="btn btn-outline-warning" value="Change The Data" type="button" onClick={this.childFn}>Change the Data</button>
-                </div>
-    }
+const Child = () => {
+    const contextData = useContext(ctx)
+    return (
+        <div className="mt-3">
+            <h2>Child Component</h2>
+            <h4>{contextData}</h4>
+        </div>
+    )
 }
-export default ChildComp;
+
+export default Child;
